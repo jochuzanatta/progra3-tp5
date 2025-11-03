@@ -12,6 +12,7 @@ class Register extends Component {
             pass: "",
             registered: false,
             error: ""
+            
         }
     }
 
