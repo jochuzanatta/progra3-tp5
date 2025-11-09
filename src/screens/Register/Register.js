@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { TextInput } from "react-native";
-import { db, auth } from "../firebase/config";
+import { db, auth } from "../../firebase/config";
 
 class Register extends Component {
     constructor(props) {
@@ -12,8 +12,17 @@ class Register extends Component {
             pass: "",
             registered: false,
             error: ""
-            
+
         }
+    }
+
+    componentDidMount() {
+        auth.onAuthStateChanged(user => {
+            if (user != null) {
+                this.props.navigation.navigate("TabNavigation")
+            }
+        })
+
     }
 
     onSubmit() {
@@ -48,7 +57,7 @@ class Register extends Component {
                 this.props.navigation.navigate("Login");
             })
             .catch(error => {
-                this.setState({ error: "Fallo en register" })
+                this.setState({ error: error.message })
                 console.log(error);
 
             })
@@ -81,11 +90,9 @@ class Register extends Component {
                 <Pressable style={styles.boton} onPress={() => this.onSubmit()}>
                     <Text style={styles.botonTexto}>Registrarme</Text>
                 </Pressable>
-                <View style={styles.preview}>
-                    <Text>Email: {this.state.email}</Text>
-                    <Text>Username: {this.state.username}</Text>
-                    <Text>Password: {this.state.pass}</Text>
-                </View>
+                <Text> 
+                    {this.state.error}
+                </Text>
             </View >
         )
     }

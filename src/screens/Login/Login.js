@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Pressable, View, Text, StyleSheet } from "react-native"
 import { TextInput } from "react-native-web"
-import { auth } from 'ruta/a/firebase/config'
+import { auth } from "../../firebase/config"
 
 class Login extends Component {
     constructor(props) {
