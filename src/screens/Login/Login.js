@@ -56,6 +56,9 @@ class Login extends Component {
                 <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email , this.state.password)}>
                     <Text style={styles.botonTexto}> Login </Text>
                 </Pressable>
+                <Text> 
+                    {this.state.error}
+                </Text>
             </View>
         )
     }
