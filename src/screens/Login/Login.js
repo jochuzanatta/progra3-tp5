@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Pressable, View, Text, StyleSheet } from "react-native"
 import { TextInput } from "react-native-web"
-import { auth } from "../../firebase/config"
+import { db, auth } from "../../firebase/config"
 
 class Login extends Component {
     constructor(props) {
@@ -23,21 +23,17 @@ class Login extends Component {
 
         auth.signInWithEmailAndPassword(email,pass)
         .then((response) => {
-            this.setState({loggedIn : true});
-            this.props.navigation.navigate("Home");
+            this.props.navigation.navigate("TabNavigation");
         })
         .catch(error => {
-            this.setState({error: "Credenciales invalidas"})
+            this.setState({error: error.message})
         })
-        console.log("Datos Ingresados");
-        console.log("Email:", this.state.email);
-        console.log("Password:", this.state.password);
     } 
 
     render() {
         return (
             <View style={styles.contenedor}>
-                <Text style={styles.titulo}>Ingresar</Text>
+                <Text style={styles.titulo}> Ingresar </Text>
                 <Pressable style={styles.click}
                     onPress={() => this.props.navigation.navigate("Register")}>
                     <Text>No tengo cuenta</Text>
@@ -57,14 +53,9 @@ class Login extends Component {
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text })}
                     value={this.state.password} />
-                <Pressable style={styles.boton} onPress={() => this.onSubmit()}>
-                    <Text style={styles.botonTexto}>Login</Text>
+                <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email , this.state.password)}>
+                    <Text style={styles.botonTexto}> Login </Text>
                 </Pressable>
-                <View style={styles.preview}>
-                    <Text>Email: {this.state.email}</Text>
-                    <Text>Username: {this.state.username}</Text>
-                    <Text>Password: {this.state.password}</Text>
-                </View>
             </View>
         )
     }
@@ -129,4 +120,3 @@ const styles = StyleSheet.create({
 })
 
 export default Login;
-//
