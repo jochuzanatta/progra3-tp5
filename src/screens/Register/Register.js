@@ -28,18 +28,18 @@ class Register extends Component {
     onSubmit() {
         const { email, pass, username } = this.state;
         if (email === "" || pass === "" || username === "") {
-            this.setState({ error: "Todos los campos son obligatorios" });
+            this.setState({ error: "¡Todos los campos son obligatorios!" });
             return;
         }
 
         if (!email.includes("@")) {
-            this.setState({ error: "El formato del email no es correcto" });
+            this.setState({ error: "¡El formato del email no es correcto!" });
             return;
         }
 
         if (pass.length < 6) {
             this.setState({
-                error: "La contraseña debe tener al menos 6 caracteres",
+                error: "¡La contraseña debe tener al menos 6 caracteres!",
             });
             return;
         }
@@ -57,7 +57,7 @@ class Register extends Component {
                 this.props.navigation.navigate("Login");
             })
             .catch(error => {
-                this.setState({ error: error.message })
+                this.setState({ error: `¡${error.message}!` })
                 console.log(error);
 
             })
@@ -66,11 +66,7 @@ class Register extends Component {
     render() {
         return (
             <View style={styles.contenedor}>
-                <Text style={styles.titulo}>Register</Text>
-                <Pressable style={styles.click}
-                    onPress={() => this.props.navigation.navigate("Login")}>
-                    <Text>Ya tengo cuenta</Text>
-                </Pressable>
+                <Text style={styles.titulo}>¡Créa tu cuenta y compartí tus recetas!</Text>
                 <TextInput style={styles.field}
                     keyboardType="email-address"
                     placeholder="email"
@@ -90,9 +86,10 @@ class Register extends Component {
                 <Pressable style={styles.boton} onPress={() => this.onSubmit()}>
                     <Text style={styles.botonTexto}>Registrarme</Text>
                 </Pressable>
-                <Text> 
-                    {this.state.error}
-                </Text>
+                <Pressable style={styles.boton} onPress={() => this.props.navigation.navigate("Login")}>
+                    <Text style={styles.botonTexto}>Ya tengo cuenta</Text>
+                </Pressable>
+                     <Text style={styles.error}>{this.state.error}</Text>
             </View >
         )
     }
@@ -100,55 +97,59 @@ class Register extends Component {
 }
 
 const styles = StyleSheet.create({
-    titulo: {
-        fontSize: 24,
-        fontWeight: "bold"
-    },
-    click: {
-        padding: 7,
-        backgroundColor: " rgba(18, 208, 255, 1)",
-        marginBottom: 10,
-        borderRadius: 4
-    },
     contenedor: {
-        padding: 10,
+        backgroundColor: "rgba(245, 118, 196, 0.48)",
+        flex: 1,
+        width: "100%",
+        justifyContent: "center",
         alignItems: "center",
-        marginTop: 20
+    },
+    titulo: {
+        fontSize: 22,
+        fontWeight: "bold",
+        color: "#ff0044ff",
+        marginBottom: 20,
     },
     field: {
-        height: 20,
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 10,
-        paddingRight: 10,
+        width:400, 
+        height: 45,
+        borderColor: "#f84877ff",
         borderWidth: 1,
-        border: "#ccc",
-        border: "solid",
-        borderRadius: 6,
-        marginTop: 10,
-        marginBottom: 10
+        borderRadius: 10,
+        paddingRight: 10,
+        paddingLeft: 10,
+        backgroundColor: "#fff",
+        marginBottom: 15,
+        color: "#333",
     },
     boton: {
-        backgroundColor: "#28a745",
-        paddingRight: 10,
-        paddingLeft: 10,
-        paddingTop: 6,
-        paddingBottom: 6,
-        textAlign: "center",
-        borderRadius: 4,
-        borderWidth: 1,
-        border: "solid",
-        borderColor: "#28a745",
-        width: 120
+        backgroundColor: "#ff0044ff",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        width: 200
     },
     botonTexto: {
         color: "#fff",
+        fontWeight: "bold",
         textAlign: "center",
+        fontSize: 16,
     },
-    preview: {
+    link: {
+        color: "#ff0044ff",
+        marginTop: 15,
+        fontSize: 14,
+        fontWeight: "bold",
+        color: "#ff0044ff",
+        marginBottom: 20,
+    },
+    error: {
+        color: "white",
         marginTop: 20,
-        alignItems: "center",
-    }
-})
+        fontSize: 14,
+        fontWeight: "bold",
+    },
+});
 
-export default Register; 
+export default Register;
