@@ -40,16 +40,16 @@ class Login extends Component {
                 </Pressable>
                 <Pressable style={styles.clickDos}
                     onPress={() => this.props.navigation.navigate("HomeMenu")}>
-                    <Text>Ingresar a la app</Text>
+                    <Text> Ingresar a la app </Text>
                 </Pressable>
                 <TextInput style={styles.field}
                     keyboardType="email-address"
-                    placeholder="email"
+                    placeholder="Email"
                     onChangeText={text => this.setState({ email: text })}
                     value={this.state.email} />
                 <TextInput style={styles.field}
                     keyboardType="default"
-                    placeholder="password"
+                    placeholder="Password"
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text })}
                     value={this.state.password} />
@@ -64,54 +64,65 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
     titulo: {
-        fontSize: 24,
-        fontWeight: "bold"
+        fontSize: 22,
+        fontWeight: "bold",
+        color: "#ff0044ff",
+        marginBottom: 20,
     },
     click: {
-        padding: 7,
-        backgroundColor: " rgba(18, 208, 255, 1)",
-        marginBottom: 10,
-        borderRadius: 4
+        backgroundColor: "#f84877ff",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        width: 200,
+        justifyContent: "center",
+        alignItems: "center",
     },
     clickDos: {
-        padding: 7,
-        backgroundColor: " rgba(255, 168, 18, 1)",
-        marginBottom: 10,
-        borderRadius: 4
+        backgroundColor: "#ff7aaaff",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        width: 200,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 20,
     },
     contenedor: {
-        padding: 10,
-        alignItems: "center"
+        backgroundColor: "rgba(245, 118, 196, 0.48)",
+        flex: 1,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10
     },
     field: {
-        height: 20,
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 10,
+        width: 400,
+        height: 45,
+        borderColor: "#f84877ff",
+        borderWidth: 1,
+        borderRadius: 10,
         paddingRight: 10,
-        border: 1,
-        border: "#ccc",
-        border: "solid",
-        borderRadius: 6,
-        marginTop: 10,
-        marginBottom: 10
+        paddingLeft: 10,
+        backgroundColor: "#fff",
+        marginBottom: 15,
+        color: "#333",
     },
     boton: {
-        backgroundColor: "#28a745",
-        paddingRight: 10,
-        paddingLeft: 10,
-        paddingTop: 6,
-        paddingBottom: 6,
-        textAlign: "center",
-        borderRadius: 4,
-        borderWidth: 1,
-        border: "solid",
-        borderColor: "#28a745",
-        width: 120
+        backgroundColor: "#ff0044ff",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        width: 200,
     },
     botonTexto: {
         color: "#fff",
+        fontWeight: "bold",
         textAlign: "center",
+        fontSize: 16,
     },
     preview: {
         marginTop: 20,
