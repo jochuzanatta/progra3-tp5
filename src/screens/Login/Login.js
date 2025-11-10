@@ -38,10 +38,6 @@ class Login extends Component {
                     onPress={() => this.props.navigation.navigate("Register")}>
                     <Text>No tengo cuenta</Text>
                 </Pressable>
-                <Pressable style={styles.clickDos}
-                    onPress={() => this.props.navigation.navigate("HomeMenu")}>
-                    <Text> Ingresar a la app </Text>
-                </Pressable>
                 <TextInput style={styles.field}
                     keyboardType="email-address"
                     placeholder="Email"
@@ -74,16 +70,6 @@ const styles = StyleSheet.create({
     },
     click: {
         backgroundColor: "#f84877ff",
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginTop: 10,
-        width: 200,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    clickDos: {
-        backgroundColor: "#ff7aaaff",
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 10,
