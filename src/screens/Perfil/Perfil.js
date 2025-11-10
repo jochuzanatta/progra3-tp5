@@ -53,6 +53,11 @@ class Perfil extends Component {
         .then(()=> this.props.navigation.navigate('Login'))
     }
 
+    irAcomentarios(data){
+        this.props.navigation.navigate('HomeMenu' , {screen: 'Comentarios', params: {data: data}})
+    }
+
+
     render() {
         return (
             <View style={styles.flatlist}>
@@ -75,7 +80,7 @@ class Perfil extends Component {
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => <Posts data={item} home={false} />}
+                        renderItem={({ item }) => <Posts data={item} home={false} irAcomentarios={(data) => this.irAcomentarios(data)} />}
                     />
 
                    
