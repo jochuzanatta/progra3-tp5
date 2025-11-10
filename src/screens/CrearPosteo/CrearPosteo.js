@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   textInput: {
-    width: 400,
+    width: 350,
     backgroundColor: "#fff",
     borderColor: "#f84877ff",
     borderWidth: 1,

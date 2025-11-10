@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     field: {
-        width: 400,
+        width: 350,
         height: 45,
         borderColor: "#f84877ff",
         borderWidth: 1,

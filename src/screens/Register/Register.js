@@ -100,15 +100,17 @@ const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        padding: 10
     },
     titulo: {
         fontSize: 22,
         fontWeight: "bold",
         color: "#ff0044ff",
         marginBottom: 20,
+        textAlign: "center"
     },
     field: {
-        width:400, 
+        width: 350, 
         height: 45,
         borderColor: "#f84877ff",
         borderWidth: 1,
