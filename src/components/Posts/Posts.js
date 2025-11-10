@@ -59,15 +59,6 @@ class Posts extends Component {
           </Text>
         </Pressable>
 
-        <Pressable
-          style={styles.boton}
-          onPress={() => this.props.irAcomentarios(this.props.data)}
-        >
-          <Text style={styles.botonTexto}>
-            Ir a comentarios
-          </Text>
-        </Pressable>
-
          </View> 
 
         : 
