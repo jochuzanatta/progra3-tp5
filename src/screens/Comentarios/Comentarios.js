@@ -49,7 +49,6 @@ class Comentarios extends Component {
                         <Text style={styles.botonTexto}> Publicar </Text>
                     </Pressable>
                 </View>
-
             </View>
 
         )
