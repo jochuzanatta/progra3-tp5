@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, StyleSheet} from "react-native"
+import { View, Text, StyleSheet, FlatList} from "react-native"
 import { db, auth } from "../../firebase/config";
 import Posts from "../../components/Posts/Posts"
 
@@ -34,11 +34,24 @@ class Home extends Component {
             });
     }
 
+    irAcomentarios(data){
+        this.props.navigation.navigate('HomeMenu' , {screen: 'Comentarios', params: {data: data}})
+    }
+
 
     render() {
         return (
-            <View style={styles.click}>
-                <Text style={styles.titulo}>Home</Text>
+            <View >
+                <Text >Ultimos Posts: </Text>
+                {this.state.loading ? (
+                    <Text>Cargando posts...</Text>
+                ) : (
+                    <FlatList
+                        data={this.state.posts}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item }) => <Posts data={item} home={true} irAcomentarios={(data) => this.irAcomentarios(data)}/>}
+                    />
+                )}
     
             </View>
         )
