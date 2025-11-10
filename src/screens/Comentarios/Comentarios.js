@@ -19,7 +19,7 @@ class Comentarios extends Component {
             comentarios: firebase.firestore.FieldValue.arrayUnion({ owner: auth.currentUser.email, comentario: this.state.comentario })
         });
         this.setState({ comentario: '' }); 
-
+        this.props.navigation.navigate("Home");
     }
 
     render() {
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: 200,
         alignSelf: "center",
+        marginBottom: 10,
     },
     botonTexto: {
         color: "#fff",

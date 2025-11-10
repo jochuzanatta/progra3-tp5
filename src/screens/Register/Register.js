@@ -55,7 +55,7 @@ class Register extends Component {
                 this.props.navigation.navigate("Login");
             })
             .catch(error => {
-                this.setState({ error: `¡${error.message}!` })
+                this.setState({ error: "Error en el registro" })
                 console.log(error);
 
             })
