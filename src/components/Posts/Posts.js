@@ -21,23 +21,23 @@ class Posts extends Component {
     const userEmail = auth.currentUser.email;
 
     if (this.state.liked) {
-     db.collection("posts").doc(this.props.data.id).update({
+      db.collection("posts").doc(this.props.data.id).update({
         likes: firebase.firestore.FieldValue.arrayRemove(userEmail),
       });
       this.setState({ liked: false });
     } else {
-        db.collection("posts").doc(this.props.data.id).update({
+      db.collection("posts").doc(this.props.data.id).update({
         likes: firebase.firestore.FieldValue.arrayUnion(userEmail),
       });
       this.setState({ liked: true });
     }
   }
 
-    eliminarPosteo(){
-        db.collection('posts').doc(this.props.data.id).delete()
+  eliminarPosteo() {
+    db.collection('posts').doc(this.props.data.id).delete()
 
 
-    }
+  }
 
   render() {
     const cantidadLikes = this.props.data.likes.length;
@@ -46,31 +46,39 @@ class Posts extends Component {
         <Text style={styles.email}>{this.props.data.owner}</Text>
         <Text style={styles.mensaje}>{this.props.data.texto}</Text>
         <Text style={styles.likes}>{cantidadLikes} likes</Text>
-        {this.props.home ? 
-        <View> 
 
+        {this.props.home ? ( 
+          <View style={styles.botonesContainer}>
+            <Pressable
+              style={styles.botonLike}
+              onPress={() => this.like()}
+            >
+              <Text style={styles.botonTexto}>
+                {this.state.liked ? "Quitar Like" : "Like"}
+              </Text>
+            </Pressable>
 
-        <Pressable
-          style={styles.boton}
-          onPress={() => this.like()}
-        >
-          <Text style={styles.botonTexto}>
-            {this.state.liked ? "Quitar Like" : "Like"}
-          </Text>
-        </Pressable>
+            <Pressable
+              style={styles.botonComentarios}
+              onPress={() => this.props.irAcomentarios(this.props.data)} //agregar en home
+            >
+              <Text style={styles.botonTexto}>
+                Ir a comentarios
+              </Text>
+            </Pressable>
+          </View>
 
-         </View> 
-
-        : 
-        <Pressable
-        style={styles.boton}
-        onPress={() => this.eliminarPosteo()}
-      >
-        <Text style={styles.botonTexto}>
-          Eliminar posteo
-        </Text>
-      </Pressable> } 
-
+        ) : (
+          <Pressable
+            style={styles.botonEliminar}
+            onPress={() => this.eliminarPosteo()}
+          >
+            <Text style={styles.botonTexto}>
+              Eliminar posteo
+            </Text>
+          </Pressable>
+          )
+        }
       </View>
     );
   }
@@ -78,34 +86,73 @@ class Posts extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 8,
-    marginVertical: 8,
+    backgroundColor: "rgba(245, 118, 196, 0.15)",
+    borderColor: "#f84877ff",
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 15,
+    marginVertical: 10,
     width: "90%",
     alignSelf: "center",
   },
   email: {
-    fontSize: 12,
-    color: "#555",
+    fontSize: 13,
+    color: "#ff0044ff",
+    fontWeight: "bold",
+    marginBottom: 5,
   },
   mensaje: {
     fontSize: 16,
+    color: "#333",
     marginVertical: 6,
+    textAlign: "center",
   },
   likes: {
     fontSize: 14,
-    color: "red",
+    color: "#ff0044ff",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
   },
-  boton: {
-    backgroundColor: "#28a745",
-    padding: 6,
-    borderRadius: 4,
-    marginTop: 8,
+  botonesContainer: {
+    alignItems: "center",
+  },
+  botonLike: {
+    backgroundColor: "#ff0044ff",
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginBottom: 8,
+    width: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  botonComentarios: {
+    backgroundColor: "#f84877ff",
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginBottom: 8,
+    width: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  botonEliminar: {
+    backgroundColor: "#ff7aaaff",
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginTop: 10,
+    width: 200,
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   botonTexto: {
     color: "#fff",
     textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 15,
   },
 });
 
