@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: "#333",
         width: "90%",
-        alignSelf: "center",
+        alignSelf: "center", 
     },
     boton: {
         backgroundColor: "#ff0044ff",
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: 200,
         alignSelf: "center",
-        marginBottom: 10,
+        marginBottom: 10,       
     },
     botonTexto: {
         color: "#fff",
