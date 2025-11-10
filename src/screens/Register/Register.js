@@ -57,7 +57,6 @@ class Register extends Component {
             .catch(error => {
                 this.setState({ error: "Error en el registro" })
                 console.log(error);
-
             })
     }
 

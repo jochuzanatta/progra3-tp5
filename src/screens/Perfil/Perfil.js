@@ -58,7 +58,7 @@ class Perfil extends Component {
             <View style={styles.flatlist}>
 
                 <View style={styles.receta}> 
-                <Text style={styles.email}> Username :{this.state.usuario.username }</Text>
+                <Text style={styles.email}> Username: {this.state.usuario.username }</Text>
                 <Text style={styles.email}> Email: {this.state.usuario.email }</Text>
                 <Pressable onPress={() => this.logout()}> 
                     <Text style={styles.logout} > Logout </Text>

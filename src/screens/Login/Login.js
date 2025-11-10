@@ -26,7 +26,7 @@ class Login extends Component {
             this.props.navigation.navigate("TabNavigation");
         })
         .catch(error => {
-            this.setState({error: error.message})
+            this.setState({error: 'Error en el login'})
         })
     } 
 
@@ -58,7 +58,6 @@ class Login extends Component {
             </View>
         )
     }
-
 }
 
 const styles = StyleSheet.create({

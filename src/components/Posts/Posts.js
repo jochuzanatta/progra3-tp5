@@ -33,12 +33,6 @@ class Posts extends Component {
     }
   }
 
-  eliminarPosteo() {
-    db.collection('posts').doc(this.props.data.id).delete()
-
-
-  }
-
   render() {
     const cantidadLikes = this.props.data.likes.length;
     return (
@@ -47,7 +41,6 @@ class Posts extends Component {
         <Text style={styles.mensaje}>{this.props.data.texto}</Text>
         <Text style={styles.likes}>{cantidadLikes} likes</Text>
 
-        {this.props.home ? ( 
           <View style={styles.botonesContainer}>
             <Pressable
               style={styles.botonLike}
@@ -60,7 +53,7 @@ class Posts extends Component {
 
             <Pressable
               style={styles.botonComentarios}
-              onPress={() => this.props.irAcomentarios(this.props.data)} //agregar en home
+              onPress={() => this.props.irAcomentarios(this.props.data)}
             >
               <Text style={styles.botonTexto}>
                 Ir a comentarios
@@ -68,17 +61,6 @@ class Posts extends Component {
             </Pressable>
           </View>
 
-        ) : (
-          <Pressable
-            style={styles.botonEliminar}
-            onPress={() => this.eliminarPosteo()}
-          >
-            <Text style={styles.botonTexto}>
-              Eliminar posteo
-            </Text>
-          </Pressable>
-          )
-        }
       </View>
     );
   }
@@ -134,17 +116,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 8,
     width: 200,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  botonEliminar: {
-    backgroundColor: "#ff7aaaff",
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginTop: 10,
-    width: 200,
-    alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
   },

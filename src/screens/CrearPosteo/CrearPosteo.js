@@ -24,7 +24,7 @@ class CrearPosteo extends Component {
         })
         .then(()=> this.props.navigation.navigate("HomeMenu"))
         .catch(error => {
-            this.setState({error: error.message})
+            this.setState({error: 'Error al crear posteo'})
         })
     }
 
