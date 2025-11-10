@@ -56,13 +56,18 @@ class Perfil extends Component {
     render() {
         return (
             <View >
-                <Text> PERFIL </Text>
-                <Text> {this.state.usuario.email }</Text>
+                
                 <Text> {this.state.usuario.username }</Text>
+                <Text> {this.state.usuario.email }</Text>
+               
+            
+               
                 
                 <Pressable onPress={() => this.logout()}> 
                     <Text> Logout </Text>
                 </Pressable>
+
+                <Text> Mis Recetas: </Text>
 
                 {this.state.loading ? (
                     <Text>Cargando posts...</Text>
