@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList, Pressable} from "react-native"
 import { db, auth } from "../../firebase/config";
 import Posts from "../../components/Posts/Posts";
 
-// FALTA APLICAR ESTILOS
+
 
 
 class Perfil extends Component {
@@ -55,19 +55,19 @@ class Perfil extends Component {
 
     render() {
         return (
-            <View >
-                
-                <Text> {this.state.usuario.username }</Text>
-                <Text> {this.state.usuario.email }</Text>
-               
-            
-               
-                
-                <Pressable onPress={() => this.logout()}> 
-                    <Text> Logout </Text>
-                </Pressable>
+            <View style={styles.flatlist}>
 
-                <Text> Mis Recetas: </Text>
+                <View style={styles.receta}> 
+                <Text style={styles.email}> Username :{this.state.usuario.username }</Text>
+                <Text style={styles.email}> Email: {this.state.usuario.email }</Text>
+                <Pressable onPress={() => this.logout()}> 
+                    <Text style={styles.logout} > Logout </Text>
+                </Pressable>
+                </View>
+                
+                
+
+                <Text style={styles.titulo}> Mis Recetas: </Text>
 
                 {this.state.loading ? (
                     <Text>Cargando posts...</Text>
@@ -86,6 +86,62 @@ class Perfil extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    titulo: {
+        fontSize: 30,
+        color: "#ff0044ff",
+        fontWeight: "bold",
+        marginBottom: 5,
+        paddingRight: 10,
+        paddingLeft: 10,
+        marginBottom: 15,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    flatlist: {
+        width: '100%' ,  
+        flex : 1
+      },
+   boton: {
+       backgroundColor: "#ff0044ff",
+       paddingVertical: 10,
+       paddingHorizontal: 20,
+       borderRadius: 10,
+       marginTop: 10,
+       marginBottom: 10,
+       width: 300 ,
+       alignSelf: "center",
+     },
+     botonTexto: {
+       color: "#fff",
+       fontWeight: "bold",
+       textAlign: "center",
+       fontSize: 16,
+   },
+   receta: {
+    backgroundColor: "rgba(245, 118, 196, 0.15)",
+    borderColor: "#f84877ff",
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 15,
+    marginVertical: 10,
+    width: 300,
+    alignSelf: "center",
+  
+},
+email: {
+    fontSize: 15,
+    color: "#000000ff",
+    fontWeight: "bold",
+    marginBottom: 5,
+},
+logout: {
+    color: "#ff0044ff",
+    fontWeight: "bold",
+    alignSelf: "center",
+}
+})
 
 
 export default Perfil;

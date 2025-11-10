@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, FlatList} from "react-native"
 import { db, auth } from "../../firebase/config";
 import Posts from "../../components/Posts/Posts"
 
-// agregar estilos 
 
 class Home extends Component {
     constructor(props) {
@@ -41,8 +40,8 @@ class Home extends Component {
 
     render() {
         return (
-            <View>
-                <Text >Ultimos Posts: </Text>
+            <View style={styles.flatlist}>
+                <Text style={styles.titulo}> Recetas </Text>
                 {this.state.loading ? (
                     <Text>Cargando posts...</Text>
                 ) : (
@@ -60,14 +59,20 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-     click: {
-        padding: 7,
-        marginBottom: 10,
-        borderRadius: 4
-    },
-        titulo: {
-        fontSize: 24,
-        fontWeight: "bold"
+      flatlist: {
+        width: '100%' ,  
+        flex : 1
+      },
+      titulo: {
+        fontSize: 30,
+        color: "#ff0044ff",
+        fontWeight: "bold",
+        marginBottom: 5,
+        paddingRight: 10,
+        paddingLeft: 10,
+        marginBottom: 15,
+        alignSelf: "center",
+        justifyContent: "center",
     },
 })
 

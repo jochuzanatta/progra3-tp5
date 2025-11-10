@@ -18,7 +18,7 @@ class Comentarios extends Component {
         db.collection("posts").doc(this.props.route.params.data.id).update({
             comentarios: firebase.firestore.FieldValue.arrayUnion({ owner: auth.currentUser.email, comentario: this.state.comentario })
         });
-        this.setState({ comentario: '' })
+        this.setState({ comentario: '' }); 
 
     }
 
