@@ -10,7 +10,6 @@ class Register extends Component {
             email: "",
             username: "",
             pass: "",
-            registered: false,
             error: ""
 
         }
@@ -53,7 +52,6 @@ class Register extends Component {
                 })
             })
             .then(res => {
-                this.setState({ registered: true })
                 this.props.navigation.navigate("Login");
             })
             .catch(error => {

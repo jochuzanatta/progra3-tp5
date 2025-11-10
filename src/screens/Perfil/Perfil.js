@@ -72,7 +72,7 @@ class Perfil extends Component {
                 {this.state.loading ? (
                     <Text>Cargando posts...</Text>
                 ) : (
-                    <FlatList
+                    <FlatList 
                         data={this.state.posts}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => <Posts data={item} home={false} />}

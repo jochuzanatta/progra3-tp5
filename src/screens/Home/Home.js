@@ -41,12 +41,12 @@ class Home extends Component {
 
     render() {
         return (
-            <View >
+            <View>
                 <Text >Ultimos Posts: </Text>
                 {this.state.loading ? (
                     <Text>Cargando posts...</Text>
                 ) : (
-                    <FlatList
+                    <FlatList 
                         data={this.state.posts}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => <Posts data={item} home={true} irAcomentarios={(data) => this.irAcomentarios(data)}/>}
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         titulo: {
         fontSize: 24,
         fontWeight: "bold"
-    }
+    },
 })
 
 
